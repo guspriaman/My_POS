@@ -38,6 +38,9 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/auth/login', 'Auth::login');
+$routes->get('/lokasi', 'Lokasi::index');
+$routes->get('/produk', 'produk::index');
+$routes->get('/barang', 'Barang::index');
 
 
 /*
