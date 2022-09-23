@@ -1,5 +1,6 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/main'); ?>
 <?= $this->section('menu'); ?>
+
 
 
           <li class="nav-item">
@@ -10,9 +11,9 @@
             </p>
             </a>
           </li>
-          
+         
         <li class="nav-item">
-            <a href="<?= site_url('kategori/index');?>" class="nav-link">
+            <a href="<?= site_url('');?>" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
                 <p>
                 Kategori
@@ -20,11 +21,38 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/home/index" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+            <a href="<?= site_url('#')?>" class="nav-link">
+                <i class="nav-icon fas fa-box"></i>
                 <p>
-                Gallery
+                Produk
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="<?= site_url('')?>" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                customer
+                </p>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="<?= base_url('')?>" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                Item
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="<?= site_url('suplier/index')?>" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                Suplier
+                </p>
+            </a>
+        </li>
+
 <?= $this->endsection(); ?>

@@ -39,9 +39,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 // $routes->get('/auth', 'Auth::index');
 // $routes->get('/auth/login', 'Auth::login');
-// $routes->get('/lokasi', 'Lokasi::index');
-// $routes->get('/produk', 'produk::index');
-// $routes->get('/produk/(:segment)', 'produk::detail/$1');
+// $routes->get('/item', 'item::index');
+$routes->get('/item/(:segment)', 'item::detail/$1');
 // $routes->get('/', 'Kategori::index');
 
 

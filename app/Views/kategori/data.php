@@ -3,7 +3,7 @@
 
 
 
-<?= $this-> section('content'); ?>
+<?= $this-> section('isi'); ?>
 
 <section class="content-wrapper">
     <div>
@@ -15,7 +15,7 @@
                 <button type="button" class="btn btn-sm btn-primary tombolTambah">
                     <i class="fa fa-plus"></i> Tambah Data
                 </button>
-                
+
     
             </h3>
                 <div class="card-tools">
@@ -65,37 +65,38 @@
                             <div class="float-center">
                                 <?= $pager->links('kategori','paging_data'); ?>
                             </div>
+        </div>
+
+
+
     </div>
 
 
 
-</div>
+    <div class="viewmodal" style="display: none ;"></div>
 
-</section>
-
-
-<div class="viewmodal" style="display: none ;"></div>
-
-<script>
-    $(document).ready(function () {
-        $('.tombolTambah').click(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                url: "<?= site_url('kategori/formTambah') ?>",
-                dataType: "json",
-                success: function(response) {
-                    if(response.data) {
-                        $('.viewmodel').html(response.data).show();
-                        $('#modaltambahkategori').modal('show');
+    <script>
+        $(document).ready(function () {
+            $('.tombolTambah').click(function(e){
+                e.preventDefault();
+                
+                $.ajax({
+                    url: "<?= site_url('kategori/formTambah') ?>",
+                    dataType: "json",
+                    success: function(response) {
+                        if(response.data) {
+                            $('.viewmodel').html(response.data).show();
+                            $('#modaltambahkategori').modal('show');
+                        }
+                        
+                    },
+                    error: function(xhr, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
                     }
-
-                },
-                error: function(xhr, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
+</section>
+
 <?= $this-> endsection(); ?>

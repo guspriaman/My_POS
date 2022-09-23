@@ -1,6 +1,6 @@
 
 <?= $this-> extend('layout/menu'); ?>
-<?= $this-> section('content'); ?>
+<?= $this-> section('isi'); ?>
 
 
 <div class="content-wrapper">
