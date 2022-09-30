@@ -20,10 +20,12 @@
                     <button class="btn btn-primary btn-flat my-3 tomboltambah">
                         <i class="fas fa-user-plus"></i> Tambal Data
                     </button>
+                    <button class="btn btn-info btn-flat my-3 tomboltambahbanyak">
+                        <i class="fas fa-user-plus"></i> Tambal Data banyak
+                    </button>
                 </div>
                 <p class="card text viewdata"></p>
                 
-
                                
             </div>
         </div>
@@ -61,12 +63,30 @@ $(document).ready(function () {
             thrownError);
         }
     });
-    })
+});
+$('#datasuplier').DataTable();
+
     
 
- 
 
-    $('#datasuplier').DataTable();
+$('.tomboltambahbanyak').click(function(e) {
+
+    e.preventDefault();
+    $.ajax({
+        url: "<?= site_url('suplier/formtambahbanyak')?>",
+        dataType: "json",
+        beforeSend: function() {
+            $('.viewdata').html('<i class="fa fa-spin fa-spinner"></i>')
+        },
+        success: function(response) {
+            $('.viewdata').html(response.data).show();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert (xhr.status + "\n" + xhr.responseText + "\n" +
+            thrownError);
+        }
+    });
+})
 });
 </script>
 

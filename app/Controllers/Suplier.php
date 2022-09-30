@@ -90,6 +90,14 @@ class Suplier extends BaseController
 
         ]);
 
+
+
+
+
+
+
+
+
         if(!$valid) {
             $msg = [
                 'error' => [
@@ -116,11 +124,140 @@ class Suplier extends BaseController
                 ];
 
 
+            
+            
             }
             echo json_encode($msg);
 
+
         } else {
             exit('Maaf tidak dapat proses');
+        }
+   }
+
+
+   
+
+   
+   public function formedit()
+   {
+        if ($this->request->isAJAX()) {
+            $nobp = $this->request->getVar('nobp');
+            // $spl = new Modelsuplier;
+            $s = $this->spl->find($nobp);
+
+            $data = [
+                'nobp' => $s['nobp'],
+                'nama' => $s['nama'],
+                'taplahir' => $s['taplahir'],
+                'tgllahir' => $s['tgllahir'],
+                'jenkel' => $s['jenkel'],
+
+            ];
+
+            $msg = [
+                'sukses' => view('suplier/modaledit', $data)
+            ];
+
+            echo json_encode($msg);
+
+        }
+   }
+
+   public function updatedata ()
+   {
+        if($this->request->isAJAX()) {
+      
+                $simpandata = [
+                    'nama' => $this->request->getVar('nama'),
+                    'taplahir' => $this->request->getVar('taplahir'),
+                    'tgllahir' => $this->request->getVar('tgllahir'),
+                    'jenkel' => $this->request->getVar('jenkel'),
+                ];
+                $nobp = $this->request->getVar('nobp');
+
+                $this->spl->update($nobp, $simpandata);
+                $msg =[
+                    'sukses' => 'Data suplier berhasil diupdate'
+                ];
+                echo json_encode($msg);
+
+
+        } else {
+            exit('Maaf tidak dapat proses');
+        }
+   }
+
+   public function hapus () 
+   {
+    if($this->request->isAJAX()) {
+        $nobp = $this->request->getVar('nobp');
+
+        
+        $this->spl->delete($nobp);
+        $msg =[
+            'sukses' => "Suplier dengan nobp $nobp berhasil dihapus"
+        ];
+        echo json_encode($msg);
+
+    }
+   }
+
+   public function formtambahbanyak()
+   {
+        if($this->request->isAJAX()) {
+            $msg =[
+                'data' => view('Suplier/formtambahbanyak')
+            ];
+            echo json_encode($msg);
+        }
+   }
+
+
+   public function simpandatabanyak()
+   {
+    if ($this->request->isAJAX()) {
+        $nobp = $this->request->getVar('nobp');
+        $nama = $this->request->getVar('nama');
+        $taplahir = $this->request->getVar('taplahir');
+        $tgllahir = $this->request->getVar('tgllahir');
+        $jenkel = $this->request->getVar('jenkel');
+        $jmldata = count($nobp);
+
+        for($i = 0; $i < $jmldata; $i++ ) {
+            $this->spl->insert([
+                'nobp' => $nobp[$i],
+                'nama' => $nama[$i],
+                'taplahir' => $taplahir[$i],
+                'tgllahir' => $tgllahir[$i],
+                'jenkel' => $jenkel[$i],
+            ]);
+        }
+
+        $msg = [
+            'sukses' => "$jmldata data berhasil disimpan"
+
+        ];
+        echo json_encode($msg);
+
+    }
+   }
+
+
+   public function hapusbanyak()
+   {
+        if($this->request->isAJAX()) {
+            $nobp = $this->request->getVar('nobp');
+            $jmldata = count($nobp);
+            for ($i = 0; $i < $jmldata; $i++ ) {
+                $this->spl->delete($nobp[$i]);
+            }
+            $msg = [
+                'sukses' => "$jmldata data Suplier berhasil dihapus"
+            ];
+
+            echo json_encode($msg);
+            
         }
    }
 }

@@ -10,6 +10,7 @@
         </button>
       </div>
       <?= form_open('suplier/simpandata' ,['class' => 'formsuplier'])  ?>
+      <?= csrf_field(); ?>
       <div class="modal-body">
         <div class="form-group row">
             <label for="" class="col-sm-2 col-form-laber"> No.BP</label>
@@ -48,12 +49,12 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-laber"> Jenkel</label>
+            <label for="" class="col-sm-2 col-form-laber"> Jenis Kelamin</label>
             <div class="col-sm-4">
                 <select name="jenkel" id="jenkel" class="form-control">
-                    <option value="">-Pilih-</option>
-                    <option value="L">-Laki-laki-</option>
-                    <option value="P">-Perempuan-</option>
+                    <option value="">Pilih</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
                 </select>
                 <div class="invalid-feedback errorJenkel">
                     
@@ -144,7 +145,7 @@ $(document).ready(function () {
                         Swal.fire({
                                     icon: 'success',
                                     title: 'Berhasil',
-                                    text: 'response.sukses',
+                                    text: 'Data suplier berhasil input',
                                     })
 
 
