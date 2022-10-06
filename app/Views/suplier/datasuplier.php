@@ -20,6 +20,7 @@
                             <th>Tempat lahir</th>
                             <th>Tgl Lahir</th>
                             <th>JenKel</th>
+                            <th>Prodi</th> 
                             <th>action</th>
                         </tr>
                     </thead>
@@ -27,35 +28,37 @@
 
                     
                     <tbody>
-                        <?php $nomor = 1; ?>
-                        <?php 
-                        foreach ($tampildata as $s) : ?>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="nobp[]" class="centangNobp" value="<?= $s['nobp'] ?>">
-                                </td>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $s['nobp'] ?></td>
-                                <td><?= $s['nama'] ?></td>
-                                <td><?= $s['taplahir'] ?></td>
-                                <td><?= $s['tgllahir'] ?></td>
-                                <td><?= $s['jenkel'] ?></td>
-                                <td>
-                                    <button type="button" class="btn btn-info btn-sm" onclick="edit('<?= $s['nobp']?>')">
-                                        <i class="fa fa-tags"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="hapus('<?= $s['nobp']?>')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php endforeach;  ?>
-                    </tbody>
+                        
                 </table>  
 <?= form_close(); ?>
                 <script>
+
+                function  listdatasuplier(){
+                    var table = $('#datasuplier').DataTable({
+                      "processing": true,
+                      "serverSide": true,
+                      "order" : [],
+                      "ajax" :{
+                        "url" : "<?= site_url('suplier/listdata')?>",
+                        "type": "POST"
+                      },
+
+                      "columnDefs": [{
+                        "targets" : 0,
+                        
+                      },
+
+                      {
+                        "targets": 1,
+                        "orderable": false,
+                      },
+
+                    ],
+                    })
+                }
                 $(document).ready(function () {
-                    $('#datasuplier').DataTable();
+                    // $('#datasuplier').DataTable();
+                    listdatasuplier();
 
                     $('#centangSemua').click(function(e) {
 
@@ -88,22 +91,24 @@
                             confirmButtonText: 'Ya, Hapus',
                             cancelButtonText: 'Tidak!'
                             }).then((result) => {
-                            $.ajax ({
-                                type: "post",
-                                url : $(this). attr('action'),
-                                data: $(this).serialize(),
-                                dataType: "json",
-                                success: function(response) {
-                                    if(response.sukses) {
-                                        datasuplier();
-                                    }
-                                    
-                                },
-                                error: function(xhr, ajaxOptions, thrownError) {
-                                alert (xhr.status + "\n" + xhr.responseText + "\n" +
-                                thrownError);
+                                if(result.value)  {
+                                    $.ajax ({
+                                        type: "post",
+                                        url : $(this). attr('action'),
+                                        data: $(this).serialize(),
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if(response.sukses) {
+                                                datasuplier();
+                                            }
+                                            
+                                        },
+                                        error: function(xhr, ajaxOptions, thrownError) {
+                                        alert (xhr.status + "\n" + xhr.responseText + "\n" +
+                                        thrownError);
+                                        }
+                                    });
                                 }
-                            });
                             })
                         }
                     })
@@ -178,4 +183,32 @@
                     })
                 }
 
+
+                function upload(nobp) {
+                    $.ajax({
+                        type: "post",
+                        url : "<?= site_url('suplier/formupload') ?>",
+                        data : {
+                            nobp: nobp
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if(response.sukses){
+                                $('.viewmodal').html(response.sukses).show();
+                                $('#modalupload').modal('show');
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert (xhr.status + "\n" + xhr.responseText + "\n" +
+                                thrownError);
+                        }
+
+                    })
+                }
+
                 </script>
+
+
+
+
+

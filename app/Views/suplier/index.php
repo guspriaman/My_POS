@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-
+<script src="<?php echo base_url()?>/assets/webcam.min.js"></script>
+<!-- <script src="<?php echo base_url()?>/assets/https://cdnjs.cloudflase.com/ajax/libs/1.0.25/webcam.min.js"></script> -->
 
 
 <div class="content-wrapper">

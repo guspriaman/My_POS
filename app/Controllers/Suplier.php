@@ -2,7 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\Modeldatasuplier;
 use App\Models\Modelsuplier;
+
+use Config\Services;
 
 class Suplier extends BaseController
 {
@@ -259,6 +262,161 @@ class Suplier extends BaseController
             echo json_encode($msg);
             
         }
+   }
+
+
+
+   public function listdata()
+   {
+       $request = Services::request();
+       $datamodel = new Modeldatasuplier($request);
+       if ($request->getMethod(true) == 'POST') {
+           $lists = $datamodel->get_datatables();
+           $data = [];
+           $no = $request->getPost("start");
+           foreach ($lists as $list) {
+               $no++;
+               $row = [];
+                $tomboledit = "<button type=\"button\" class=\"btn btn-info btn-sm\" onclick=\"edit('". $list->nobp."')\">
+                <i class=\"fa fa-tags\"></i></button>";
+                $tombolhapus = "<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"hapus('". $list->nobp."')\">
+                <i class=\"fa fa-trash\"></i></button>";
+                $tombolupload = "<button type=\"button\" class=\"btn btn-warning btn-sm\" onclick=\"upload('". $list->nobp."')\">
+                <i class=\"fa fa-image\"></i></button>";
+
+               $row[] = "<input type=\"checkbox\" name=\"nobp[]\" class=\"centangNobp\" value=\"$list->nobp\">";
+               $row[] = $no;
+               $row[] = $list->nobp;
+               $row[] = $list->nama;
+               $row[] = $list->taplahir;
+               $row[] = $list->tgllahir;
+               $row[] = $list->jenkel;
+               $row[] = $list->prodinama;
+               $row[] = $tomboledit. " ". $tombolhapus. " " . $tombolupload;
+               $data[] = $row;
+           }
+           $output = [
+               "draw" => $request->getPost('draw'),
+               "recordsTotal" => $datamodel->count_all(),
+               "recordsFiltered" => $datamodel->count_filtered(),
+               "data" => $data
+           ];
+           echo json_encode($output);
+       }
+   }
+// untuk upload file atau gambar
+
+   public function formupload() {
+    if ($this->request->isAJAX()) {
+        $nobp = $this->request->getVar('nobp');
+        $data = [
+            'nobp' => $nobp 
+        ];
+
+        $msg = [
+            'sukses' => view('suplier/modalupload', $data)
+        ];
+        echo json_encode($msg);
+    }
+   }
+
+   public function doupload() {
+    if ($this->request->isAJAX()) {
+        $nobp = $this->request->getVar('nobp');
+        $validation = \Config\Services::validation();
+
+
+        if ($_FILES['foto']['name'] == NULL && $this->request->getpost('imagecam') == ''){
+            $msg = ['error' => 'Silakan pilih salah satu yaaa'];
+        }
+        elseif ($_FILES['foto']['name'] == NULL){
+            // cek dulu fotonya
+            $cekdata = $this->spl->find($nobp);
+            $fotolama = $cekdata['foto'];
+            if($fotolama != NULL || $fotolama != "") {
+                unlink ($fotolama);
+            }
+
+            $image = $this->request->getPost('imagecam');
+            $image = str_replace('data:image/jpeg;base64,','',$image);
+            $image = base64_decode($image, true);
+
+            $filename = $nobp . '.jpg';
+            file_put_contents(FCPATH. '/assets/images/foto/'. $filename
+            , $image);
+
+            $updatedata = [
+                'foto' => './assets/images/foto/'. $filename
+            ];
+            $this->spl->update($nobp, $updatedata);
+
+            $msg = [
+                'sukses'=> 'Berhasil diupload'
+            ];
+
+
+         } else {
+
+                $valid = $this->validate([
+                    'foto' => [
+                        'label' => 'upload Foto',
+                        'rules' => 'uploaded[foto]|mime_in[foto,image/png,image/jpg,image/jpeg]|is_image[foto]',
+                        'errors' => [
+                            'uploaded' => '{field} wajib diisi',
+                            'mime_in' => 'Harus dalam bentuk gambar, jangan file yang lain'
+                        ]
+                    ]
+                ]);
+                if(!$valid) {
+                    $msg = [
+                        'error' => [
+                            'foto' => $validation->getError('foto')
+                        ]
+                    ];
+                    
+        
+                }else{
+                    // cek dulu fotonya
+                    $cekdata = $this->spl->find($nobp);
+                    $fotolama = $cekdata['foto'];
+                    if($fotolama != NULL || $fotolama != "") {
+                        unlink ($fotolama);
+                    }
+
+
+                    $filefoto = $this->request->getFile('foto');
+        
+                    $filefoto->move('assets/images/foto', $nobp. '.' . $filefoto->getExtension());
+                    
+                    $updatedata = [
+                        'foto' => './assets/images/foto/'. $filefoto->getName()
+                    ];
+                    $this->spl->update($nobp, $updatedata);
+        
+                    $msg = [
+                        'sukses'=> 'Berhasil diupload'
+                    ];
+        
+                }
+                
+                $valid = $this->validate([
+                    'foto' => [
+                        'label' => 'Upload Foto',
+                        'rules' => '	uploaded[foto]|mime_in[foto,image/png,image/jpg]|is_image[foto]',
+                        'errors' => [
+                            'uploaded' => '{field} wajib diisi',
+                            'mime_in' => 'Harus dalam bentuk gambar, jangan file yang lain'
+                        ]
+                    ]
+                ]);    
+            }
+
+
+            echo json_encode($msg);
+
+
+
+    }
    }
 }
 

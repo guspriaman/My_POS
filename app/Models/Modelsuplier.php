@@ -8,7 +8,9 @@ class Modelsuplier extends Model
       protected $table ='suplier';
       protected $primaryKey = 'nobp'; 
 
-      protected $allowedFields = ['nobp','nama','taplahir','tgllahir','jenkel'];
+      protected $allowedFields = ['nobp','nama','taplahir','tgllahir','jenkel', 'foto'];
 
    }
 
+
+   
