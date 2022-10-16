@@ -14,22 +14,22 @@
 
     <div class="content-header ">
         <div class="container-fluid ">
-            <div class="s mb-2 bt-10 ">
-                <div class="col-sm-3 bt-3">
+            <div class="mb-2 bt-10 ">
+                <div class="col-sm-3 bt-3 ">
                     <h1 class="m-0 ">Data Suplier</h1>
                     <button class="btn btn-primary btn-flat my-3 tomboltambah">
                         <i class="fas fa-user-plus"></i> Tambal Data
                     </button>
+
                     <button class="btn btn-info btn-flat my-3 tomboltambahbanyak">
                         <i class="fas fa-user-plus"></i> Tambal Data banyak
                     </button>
                 </div>
-                <p class="card text viewdata"></p>
-                
-                               
+                <p class="card text viewdata"></p>            
             </div>
         </div>
     </div>
+
 <div class="viewmodal" style="display:none ;"></div>
 <script>
 function datasuplier(){

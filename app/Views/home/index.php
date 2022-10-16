@@ -3,7 +3,6 @@
 <?= $this-> section('isi'); ?>
 
 
-<div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2 bt-10">
@@ -17,5 +16,4 @@
             </div>
         </div>
     </div>
-</div>
 <?= $this-> endsection(); ?>

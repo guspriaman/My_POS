@@ -13,8 +13,8 @@
           </li>
          
         <li class="nav-item">
-            <a href="<?= site_url('kategori/index');?>" class="nav-link">
-                <i class="nav-icon far fa-tasks"></i>
+            <a href="<?= site_url('kategori/index')?>" class="nav-link">
+                <i class="nav-icon fas fa-tasks"></i>
                 <p>
                 Kategori
                 </p>

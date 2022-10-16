@@ -2,7 +2,7 @@
 <?= $this->section('isi'); ?>
 
 
-<section class="content-wrapper">
+<section>
     <div>
         <h2> Data Customer</h2>
     </div>
