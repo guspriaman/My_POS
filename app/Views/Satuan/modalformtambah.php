@@ -1,23 +1,21 @@
-<div class="modal fade" id="modaltambahkategori" tabindex="-1" aria-labelledby="modaltambahkategoriLabel"
+<div class="modal fade" id="modaltambahsatuan" tabindex="-1" aria-labelledby="modaltambahsatuanLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modaltambahkategoriLabel">Tambah Kategori</h5>
+                <h5 class="modal-title" id="modaltambahsatuanLabel">Tambah Satuan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('kategori/simpandata', ['class' => 'formsimpan']) ?>
+            <?= form_open('satuan/simpandata', ['class' => 'formsimpan']) ?>
             <input type="hidden" name="aksi" id="aksi" value="<?= $aksi; ?>">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="">Nama Kategori</label>
-                    <input type="text" name="namakategori" id="namakategori" class="form-control form-control-sm"
-                        required>
+                    <label for="">Nama Satuan</label>
+                    <input type="text" name="namasatuan" id="namasatuan" class="form-control form-control-sm" required>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary tombolSimpan">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -26,9 +24,6 @@
         </div>
     </div>
 </div>
-
-
-
 <script>
 $(document).ready(function() {
     $('.formsimpan').submit(function(e) {
@@ -56,8 +51,8 @@ $(document).ready(function() {
                             }
                         });
                     } else {
-                        tampilKategori();
-                        $('#modaltambahkategori').modal('hide');
+                        $('#modaltambahsatuan').modal('hide');
+                        tampilSatuan();
                     }
                 }
             },
@@ -69,12 +64,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
-
-
-
-
-
-
-

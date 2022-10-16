@@ -12,7 +12,6 @@
 <!-- <script src="<?php echo base_url()?>/assets/https://cdnjs.cloudflase.com/ajax/libs/1.0.25/webcam.min.js"></script> -->
 
 
-<div class="content-wrapper">
     <div class="content-header ">
         <div class="container-fluid ">
             <div class="s mb-2 bt-10 ">
@@ -31,7 +30,6 @@
             </div>
         </div>
     </div>
-</div>
 <div class="viewmodal" style="display:none ;"></div>
 <script>
 function datasuplier(){

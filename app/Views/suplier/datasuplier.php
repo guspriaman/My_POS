@@ -30,7 +30,7 @@
                     <tbody>
                         
                 </table>  
-<?= form_close(); ?>
+                <?= form_close(); ?>
                 <script>
 
                 function  listdatasuplier(){

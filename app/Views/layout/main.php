@@ -11,7 +11,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <!-- <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"> -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
   <!-- Theme style -->
  
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="plugins/node_modules/sweetalert2/dist/sweetalert2.all.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="plugins/node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" type="text/css">
   <script src="plugins/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   
   <script src="plugins/jquery/jquery.min.js"></script>
@@ -37,7 +37,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/LOGO/hitamlogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble img-circle elevation-2" src="dist/img/LOGO/profilgus.jpeg" alt="AdminLTELogo" height="500" width="500">
   </div>
 
   <!-- Navbar -->
@@ -100,7 +100,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/LOGO/profilhitam.jpeg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/LOGO/profilgus.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Guspriaman Warasi</a>
@@ -116,17 +116,69 @@
 
         <?= $this->renderSection('menu'); ?>
         </ul>
-    </nav>
-     
- 
-  </div>
+      </nav>
+      
+      
+    </div>
     <!-- /.sidebar -->
-</aside>
+  </aside>
+ 
+  <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>
+                                <?= $this->renderSection('judul') ?>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
 
+            <!-- Main content -->
+            <section class="content">
 
+                <!-- Default box -->
+                <?= $this->renderSection('isi') ?>
 
-  <!-- content -->
-  <?= $this->renderSection('isi'); ?>
+                <!-- /.card -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
 
 
 
@@ -144,20 +196,20 @@
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- <script src="dist/js/demo.js"></script> -->
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<!-- <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="plugins/raphael/raphael.min.js"></script>
 <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
+<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+<script src="plugins/chart.js/Chart.min.js"></script>
 
-<!-- <script src="dist/js/pages/dashboard2.js"></script> -->
+<script src="dist/js/pages/dashboard2.js"></script>
 </body>
 </html>

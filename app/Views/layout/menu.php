@@ -14,20 +14,30 @@
          
         <li class="nav-item">
             <a href="<?= site_url('kategori/index');?>" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+                <i class="nav-icon far fa-tasks"></i>
                 <p>
                 Kategori
                 </p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="<?= site_url('#')?>" class="nav-link">
-                <i class="nav-icon fas fa-box"></i>
+            <a href="<?= site_url('produk/index')?>" class="nav-link">
+                <i class="nav-icon fas fa-tasks"></i>
                 <p>
                 Produk
                 </p>
             </a>
         </li>
+        
+        <li class="nav-item">
+            <a href="<?= base_url('satuan/index')?>" class="nav-link">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
+                    Satuan
+                </p>
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a href="<?= site_url('')?>" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -36,16 +46,8 @@
                 </p>
             </a>
         </li>
-        
-        <li class="nav-item">
-            <a href="<?= base_url('')?>" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                Item
-                </p>
-            </a>
-        </li>
 
+        
         <li class="nav-item">
             <a href="<?= site_url('suplier/index')?>" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>

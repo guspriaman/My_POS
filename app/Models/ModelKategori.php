@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 class ModelKategori extends Model
 {
     protected $table = 'kategori';
-    protected $primaryKey = 'ketid';
-    protected $allowedFields = ['ketid','ketnama'];
+    protected $primaryKey = 'katid';
+    protected $allowedFields = ['katid','katnama'];
 
     public function cariData($cari)
     {

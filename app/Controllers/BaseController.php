@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\models\Modelsuplier;
 
+
 /**
  * Class BaseController
  *
@@ -38,7 +39,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form','url'];
+    protected $helpers = ['form','url','file'];
 
     /**
      * Constructor.
