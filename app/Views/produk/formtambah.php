@@ -172,6 +172,9 @@ $(document).ready(function() {
         mDec: '0'
     });
 
+    tampilKategori();
+    tampilSatuan();
+
 
     $('.tombolTambahKategori').click(function(e) {
         e.preventDefault();
@@ -249,9 +252,9 @@ $(document).ready(function() {
             
             success: function(response) {
                 if (response.error) {
-                    let msg = response.error;
-                    if (msg.errorKodeBarcode) {
-                        $('.errorKodeBarcode').html(msg.errorKodeBarcode).show();
+                    let dataError = response.error;
+                    if (dataError.errorKodeBarcode) {
+                        $('.errorKodeBarcode').html(dataError.errorKodeBarcode).show();
                         $('#kodebarcode').addClass('is-invalid');
                     } else {
                         $('.errorKodeBarcode').fadeOut();
@@ -259,8 +262,8 @@ $(document).ready(function() {
                         $('#kodebarcode').addClass('is-valid');
                     }
 
-                    if (msg.errorNamaProduk) {
-                        $('.errorNamaProduk').html(msg.errorNamaProduk).show();
+                    if (dataError.errorNamaProduk) {
+                        $('.errorNamaProduk').html(dataError.errorNamaProduk).show();
                         $('#namaproduk').addClass('is-invalid');
                     } else {
                         $('.errorNamaProduk').fadeOut();
@@ -268,8 +271,8 @@ $(document).ready(function() {
                         $('#namaproduk').addClass('is-valid');
                     }
 
-                    if (msg.errorStok) {
-                        $('.errorStok').html(msg.errorStok).show();
+                    if (dataError.errorStok) {
+                        $('.errorStok').html(dataError.errorStok).show();
                         $('#stok').addClass('is-invalid');
                     } else {
                         $('.errorStok').fadeOut();
@@ -277,8 +280,8 @@ $(document).ready(function() {
                         $('#stok').addClass('is-valid');
                     }
 
-                    if (msg.errorKategori) {
-                        $('.errorKategori').html(msg.errorKategori).show();
+                    if (dataError.errorKategori) {
+                        $('.errorKategori').html(dataError.errorKategori).show();
                         $('#kategori').addClass('is-invalid');
                     } else {
                         $('.errorKategori').fadeOut();
@@ -286,8 +289,8 @@ $(document).ready(function() {
                         $('#kategori').addClass('is-valid');
                     }
 
-                    if (msg.errorSatuan) {
-                        $('.errorSatuan').html(msg.errorSatuan).show();
+                    if (dataError.errorSatuan) {
+                        $('.errorSatuan').html(dataError.errorSatuan).show();
                         $('#satuan').addClass('is-invalid');
                     } else {
                         $('.errorSatuan').fadeOut();
@@ -295,8 +298,8 @@ $(document).ready(function() {
                         $('#satuan').addClass('is-valid');
                     }
 
-                    if (msg.errorHargaBeli) {
-                        $('.errorHargaBeli').html(msg.errorHargaBeli).show();
+                    if (dataError.errorHargaBeli) {
+                        $('.errorHargaBeli').html(dataError.errorHargaBeli).show();
                         $('#hargabeli').addClass('is-invalid');
                     } else {
                         $('.errorHargaBeli').fadeOut();
@@ -304,8 +307,8 @@ $(document).ready(function() {
                         $('#hargabeli').addClass('is-valid');
                     }
 
-                    if (msg.errorHargaJual) {
-                        $('.errorHargaJual').html(msg.errorHargaJual).show();
+                    if (dataError.errorHargaJual) {
+                        $('.errorHargaJual').html(dataError.errorHargaJual).show();
                         $('#hargajual').addClass('is-invalid');
                     } else {
                         $('.errorHargaJual').fadeOut();
@@ -313,8 +316,8 @@ $(document).ready(function() {
                         $('#hargajual').addClass('is-valid');
                     }
                     
-                    if (msg.errorUpload) {
-                        $('.errorUpload').html(msg.errorUpload).show();
+                    if (dataError.errorUpload) {
+                        $('.errorUpload').html(dataError.errorUpload).show();
                         $('#uploadgambar').removeClass('is-invalid');
                         $('#uploadgambar').addClass('is-invalid');
                     }

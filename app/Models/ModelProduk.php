@@ -18,9 +18,14 @@ class ModelProduk extends Model
         'gambar'
     ];
 
+
+  
+
     public function cariData($cari)
     {
-        return $this->table('kategori')->like('katnama', $cari);
+
+        return $this->table('produk')->join('kategori', 'katid=produk_katid')->join('satuan', 'satid=produk_satid')
+        ->orlike('kodebarcode', $cari)->orlike('namaproduk', $cari);
     }
 
 }
