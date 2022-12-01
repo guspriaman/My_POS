@@ -9,6 +9,11 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\models\Modelsuplier;
+use App\models\ModelKategori;
+use App\models\ModelPelanggan;
+use App\models\Modeldatasatuan;
+use App\models\ModelProduk;
+use App\models\Modelsatuan;
 
 
 /**

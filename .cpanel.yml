@@ -1,0 +1,22 @@
+
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/u1663928/public_html/my_pos
+    - /bin/cp .env $DEPLOYPATH
+    - /bin/cp .gitignore $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp builds $DEPLOYPATH
+    - /bin/cp composer.json $DEPLOYPATH
+    - /bin/cp composer.lock $DEPLOYPATH
+    - /bin/cp LICENSE $DEPLOYPATH
+    - /bin/cp package-lock.json $DEPLOYPATH
+    - /bin/cp phpunit.xml.dist $DEPLOYPATH
+    - /bin/cp preload.php $DEPLOYPATH
+    - /bin/cp spark $DEPLOYPATH
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R tests $DEPLOYPATH
+    - /bin/cp -R vendor $DEPLOYPATH
+    - /bin/cp -R writable $DEPLOYPATH
+
