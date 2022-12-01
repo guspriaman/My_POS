@@ -12,9 +12,6 @@
                 <button type="button" class="btn btn-sm btn-primary tombolTambah">
                     <i class="fa fa-plus"></i> Tambah Data
                 </button>
-                <button type="button" class="btn btn-sm btn-primary tombolTambah">
-                    <i class="fa fa-plus"></i> Tambah 
-                </button>
             </h3>
 
             <div class="card-tools">
@@ -82,6 +79,8 @@
     </div>
 <div class="viewmodal" style="display: none;"></div>
 <script>
+
+
 function hapus(id, nama) {
     Swal.fire({
         title: 'Hapus Kategori',
@@ -100,12 +99,14 @@ function hapus(id, nama) {
                 data: {
                     idkategori: id
                 },
+
                 dataType: "json",
                 success: function(response) {
                     if (response.sukses) {
                         window.location.reload();
                     }
                 },
+                
                 error: function(xhr, thrownError) {
                     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
                 }
@@ -168,24 +169,24 @@ $(document).ready(function() {
 
 
 
-$(document).ready(function () {
-    datasuplier();
-    $('.tomboltambah'). click(function(e) {
-        e.preventDefault();
-        $.ajax({
-        url: "<?= site_url('kategori/formtambah')?>",
-        dataType: "json",
-        success: function(response) {
-            $('.viewmodal').html(response.data).show();
+// $(document).ready(function () {
+//     datasuplier();
+//     $('.tomboltambah'). click(function(e) {
+//         e.preventDefault();
+//         $.ajax({
+//         url: "<?= site_url('kategori/formtambah')?>",
+//         dataType: "json",
+//         success: function(response) {
+//             $('.viewmodal').html(response.data).show();
 
-            $('#modaltambah').modal('show');
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            alert (xhr.status + "\n" + xhr.responseText + "\n" +
-            thrownError);
-        }
-        });
-    });
-}); 
+//             $('#modaltambah').modal('show');
+//         },
+//         error: function(xhr, ajaxOptions, thrownError) {
+//             alert (xhr.status + "\n" + xhr.responseText + "\n" +
+//             thrownError);
+//         }
+//         });
+//     });
+// }); 
 </script>
 <?= $this->endSection() ?>

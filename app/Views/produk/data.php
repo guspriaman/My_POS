@@ -101,6 +101,7 @@ function hapus (kode, nama) {
                 data: {
                     kode : kode
                 },
+                
                 dataType: "json",
                 success: function (response) {
                     if (response.sukses) {
