@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'my_online_shop_app',
+        'database' => 'my_pos',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
