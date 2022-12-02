@@ -2,7 +2,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u1663928/public_html/my_pos
+    - export DEPLOYPATH=/home/u1663928/my_pos
     - /bin/cp .env $DEPLOYPATH
     - /bin/cp .gitignore $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH
@@ -15,7 +15,7 @@ deployment:
     - /bin/cp preload.php $DEPLOYPATH
     - /bin/cp spark $DEPLOYPATH
     - /bin/cp -R app $DEPLOYPATH
-    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH 
     - /bin/cp -R tests $DEPLOYPATH
     - /bin/cp -R vendor $DEPLOYPATH
     - /bin/cp -R writable $DEPLOYPATH
